@@ -1,11 +1,11 @@
 # Site settings
-title: Erwin's Blog
-SEOTitle: Erwin Blog
-header-img: img/home-bg.jpg
-email: erwin.lejeune15@gmail.com
-description: "Erwin's Blog Page | Learning, Lifestyle, Experiences"
-keyword: "Erwin, Erwin Blog, Erwin Lejeune, Github Pages, Web, JavaScript, React, React Native"
-url: "guilyx.github.com" # your host, for absolute URL
+title: Charlie Elektra Lange
+SEOTitle: Charlie Lange
+header-img: img/home-md-ch.jpg
+email: charlie.lange@posteo.de
+description: "Frontend: Machine Learning for Nature. Backend: A lot of artsy stuff and intended questionmarks."
+keyword: "Charlie Lange, Machine Learning for Climate, ML for Climate, Poetry"
+url: "geronimocharlie.github.com" # your host, for absolute URL
 baseurl: "" # for example, '/blog' if your blog hosted on 'host/blog'
 
 # Publish posts or collection documents with a future date.
@@ -13,14 +13,14 @@ future: true
 
 # SNS settings
 RSS: false
-github_username: guilyx
-twitter_username: rangonomics
+github_username: geronimocharlie
+twitter_username: CHANGE
 #facebook_username:  huxpro
-linkedin_username:  erwinlejeune-lkn
+linkedin_username:  CHANGE
 
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
-highlighter: rouge
+highlighter: rouge #TODO wanna change that colour?
 permalink: pretty
 paginate: 10
 exclude:
@@ -67,12 +67,12 @@ netease_comment: false
 
 # Google Analytics
 ga_track_id: "G-L60Z89VR35" # Format: UA-xxxxxx-xx
-ga_domain: guilyx.github.io
+ga_domain: geronimocharlie.github.io
 
 # Sidebar settings
 sidebar: true # whether or not using Sidebar.
-sidebar-about-description: "Erwin Lejeune <br> Swarm Team @ ATRC"
-sidebar-avatar: https://github.com/guilyx.png # use absolute URL, seeing it's used in both `/` and `/about/`
+sidebar-about-description: "Charlie Lange <br> ML for Nature"
+sidebar-avatar: https://github.com/geronimocharlie.png # use absolute URL, seeing it's used in both `/` and `/about/`
 
 # Featured Tags
 featured-tags: true # whether or not using Feature-Tags
@@ -88,5 +88,14 @@ page-mathjax: false
 # Friends
 friends:
   [
-    { title: "Open PR to be featured!", href: "https://github.com/guilyx/guilyx.github.io/pulls" },
+    { title: "Open PR to be featured!", href: "https://github.com/geronimocharlie/geronimocharlie.github.io/pulls" },
   ]
+
+
+collections:
+  poetry:
+    output: true
+    permalink: /poetry/:title/
+defaults:
+  - scope: { path: "", type: "poetry" }
+    values: { layout: poem }

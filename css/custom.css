@@ -1,0 +1,11 @@
+.post-content.poem {
+  max-width: 40ch;
+  margin: 0 auto;
+  font-family: "Georgia", serif;
+  line-height: 1.8;
+  font-size: 1.2rem;
+  white-space: pre-wrap; /* preserve line breaks */
+}
+
+.post-meta { opacity: .75; font-style: italic; }
+.post-location { white-space: nowrap; }

@@ -1,0 +1,16 @@
+{% comment %}
+Usage: {% include season_label.html date=page.date label=page.display_date %}
+- If "label" is set (e.g., "Summer 2024"), it prints that.
+- Otherwise it infers a season from the date.
+{% endcomment %}
+
+{% if include.label and include.label != "" %}
+  {{ include.label }}
+{% else %}
+  {% assign m = include.date | date: "%-m" | plus: 0 %}
+  {% assign y = include.date | date: "%Y" %}
+  {% if m >= 3 and m <= 5 %}Spring {{ y }}
+  {% elsif m >= 6 and m <= 8 %}Summer {{ y }}
+  {% elsif m >= 9 and m <= 11 %}Autumn {{ y }}
+  {% else %}Winter {{ y }}{% endif %}
+{% endif %}
