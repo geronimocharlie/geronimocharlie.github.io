@@ -1,0 +1,12 @@
+<div class="link-card">
+  <iframe
+    src="{{ include.url }}"
+    loading="lazy"
+    referrerpolicy="no-referrer"
+    sandbox="allow-same-origin allow-scripts allow-popups"
+    title="Preview: {{ include.text | default: include.url }}">
+  </iframe>
+  <div class="link-card__meta">
+    <a href="{{ include.url }}">{{ include.text | default: include.url }}</a>
+  </div>
+</div>

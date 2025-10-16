@@ -1,114 +1,166 @@
 {% comment %}
-    @param {string} type - 'page' | 'post' | 'keynote'
-    @param {boolean} short
+  @param {string} type - 'page' | 'post' | 'keynote'
+  @param {boolean} short
 {% endcomment %}
 
 {% if include.type == 'post' or include.type == 'page' %}
 <style type="text/css">
-    header.intro-header{
-        position: relative;
-        background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}');
-        background: {{ page.header-bg-css }};
-    }
+  /* Always position the header so absolute children (video/scrim/mask) anchor correctly */
+  header.intro-header { position: relative; }
 
-    {% if page.header-mask %}
-    header.intro-header .header-mask{
-        width: 100%;
-        height: 100%;
-        position: absolute;
-        background: rgba(0,0,0, {{ page.header-mask }});
-    }
-    {% endif %}
+  /* Only apply background-image when no video is present */
+  {% unless page.header_video_mp4 or page.header_video_webm %}
+  header.intro-header{
+      background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}');
+      background: {{ page.header-bg-css }};
+  }
+  {% endunless %}
+
+  /* Optional dark mask controlled by front matter: header-mask: 0.35 */
+  {% if page.header-mask %}
+  header.intro-header .header-mask{
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      inset: 0;
+      background: rgba(0,0,0, {{ page.header-mask }});
+      z-index: 1;
+  }
+  {% endif %}
+
+  /* Video header helpers */
+  header.intro-header.video-header { overflow: hidden; }
+  header.intro-header.video-header .header-video{
+      position: absolute; inset: 0;
+      width: 100%; height: 100%;
+      object-fit: cover;
+      z-index: 0; pointer-events: none;
+  }
+  /* Gentle scrim to boost contrast over the video */
+  header.intro-header.video-header .header-scrim{
+      content: ""; position: absolute; inset: 0; z-index: 1;
+      background: linear-gradient(to bottom, rgba(0,0,0,.45), rgba(0,0,0,.15));
+  }
+  /* Ensure heading text sits above overlays */
+  .intro-header .site-heading,
+  .intro-header .post-heading,
+  .intro-header .page-heading { position: relative; z-index: 2; }
 </style>
 {% endif %}
 
 {% if include.type == 'post' %}
-{% if page.header-style == 'text' %}
-<header class="intro-header style-text" >
-{% else %}
-<header class="intro-header" >
-{% endif %}
-    <div class="header-mask"></div>
-    {% if page.header-img-credit %}
-    <div class="header-img-credit">
+  {% if page.header-style == 'text' %}
+    <header class="intro-header style-text">
+  {% elsif page.header_video_mp4 or page.header_video_webm %}
+    <header class="intro-header video-header" style="background-image:none">
+      <video class="header-video" autoplay loop muted playsinline preload="metadata"
+             {% if page.header_poster %}poster="{{ page.header_poster | relative_url }}"{% endif %}>
+        {% if page.header_video_webm %}
+          <source src="{{ page.header_video_webm | relative_url }}" type="video/webm">
+        {% endif %}
+        {% if page.header_video_mp4 %}
+          <source src="{{ page.header_video_mp4 | relative_url }}" type="video/mp4">
+        {% endif %}
+      </video>
+      <span class="header-scrim"></span>
+  {% else %}
+    <header class="intro-header">
+  {% endif %}
+      <div class="header-mask"></div>
+      {% if page.header-img-credit %}
+      <div class="header-img-credit">
         Image by <a href="//{{page.header-img-credit-href}}">{{page.header-img-credit}}</a>
-    </div>
-    {% endif %}
-    <div class="container">
+      </div>
+      {% endif %}
+
+      <div class="container">
         <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <div class="tags">
-                        {% for tag in page.tags %}
-                        <a class="tag" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
-                        {% endfor %}
-                    </div>
-                    <h1>{{ page.title }}</h1>
-                    {% comment %} always create a h2 for keeping the margin {% endcomment %}
-                    <h2 class="subheading">{{ page.subtitle }}</h2>
-                    <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %} on {{ page.date | date: "%B %-d, %Y" }}</span>
-                </div>
+          <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+            <div class="post-heading">
+              <div class="tags">
+                {% for tag in page.tags %}
+                  <a class="tag" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
+                {% endfor %}
+              </div>
+              <h1>{{ page.title }}</h1>
+              {%- comment -%} keep an h2 to preserve spacing even if empty {%- endcomment -%}
+              <h2 class="subheading">{{ page.subtitle }}</h2>
+
+              {% assign allowed = "research,festival,moderation,poetry" | split: "," %}
+              {% if allowed contains page.collection %}
+                <span class="meta">
+                  {% include season_label.html date=page.date label=page.display_date %}
+                  {% if page.location %} · {{ page.location }}{% endif %}
+                </span>
+              {% endif %}
             </div>
+          </div>
         </div>
-    </div>
-</header>
+      </div>
+    </header>
 {% endif %}
 
 {% if include.type == 'keynote' %}
 <style type="text/css">
-    header.intro-header{
-        height: 500px;
-        overflow: hidden;
-    }
-    header.intro-header .container{
-        visibility: hidden;
-    }
-    header iframe{
-        width: 100%;
-        height: 100%;
-        border: 0;
-    }
+  header.intro-header{ height: 500px; overflow: hidden; }
+  header.intro-header .container{ visibility: hidden; }
+  header iframe{ width: 100%; height: 100%; border: 0; }
 </style>
-<header class="intro-header" >
-    <iframe src="{{page.iframe}}"></iframe>
-    <!-- keep for SEO -->
-    <div class="container">
-        <div class="row">
-            <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-                <div class="post-heading">
-                    <div class="tags">
-                        {% for tag in page.tags %}
-                        <a class="tag" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
-                        {% endfor %}
-                    </div>
-                    <h1>{{ page.title }}</h1>
-                    {% comment %} always create a h2 for keeping the margin {% endcomment %}
-                    <h2 class="subheading">{{ page.subtitle }}</h2>
-                    <span class="meta">Posted by {% if page.author %}{{ page.author }}{% else %}{{ site.title }}{% endif %}
-                        on {{ page.date | date: "%B %-d, %Y" }}</span>
-                </div>
-            </div>
-        </div>
-    </div>
-</header>
-{% endif %}
-
-{% if include.type == 'page' %}
-<header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
-  <div class="header-mask"></div>
+<header class="intro-header">
+  <iframe src="{{page.iframe}}"></iframe>
+  <!-- keep for SEO -->
   <div class="container">
     <div class="row">
       <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
-        {% if include.short %}
-        <div class="site-heading" id="tag-heading">
-        {% else %}
-        <div class="site-heading">
-        {% endif %}
-          <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
-          <span class="subheading">{{ page.description }}</span>
+        <div class="post-heading">
+          <div class="tags">
+            {% for tag in page.tags %}
+              <a class="tag" href="{{ site.baseurl }}/archive/?tag={{ tag | url_encode }}" title="{{ tag }}">{{ tag }}</a>
+            {% endfor %}
+          </div>
+          <h1>{{ page.title }}</h1>
+          <h2 class="subheading">{{ page.subtitle }}</h2>
+          <span class="meta">
+            {{ page.date | date: "%B %-d, %Y" }}
+            {% if page.location %} · {{ page.location }}{% endif %}
+          </span>
         </div>
       </div>
     </div>
   </div>
 </header>
+{% endif %}
+
+{% if include.type == 'page' %}
+  {% if page.header_video_mp4 or page.header_video_webm %}
+    <header class="intro-header video-header" style="background-image:none">
+      <video class="header-video" autoplay loop muted playsinline preload="metadata"
+             {% if page.header_poster %}poster="{{ page.header_poster | relative_url }}"{% endif %}>
+        {% if page.header_video_webm %}
+          <source src="{{ page.header_video_webm | relative_url }}" type="video/webm">
+        {% endif %}
+        {% if page.header_video_mp4 %}
+          <source src="{{ page.header_video_mp4 | relative_url }}" type="video/mp4">
+        {% endif %}
+      </video>
+      <span class="header-scrim"></span>
+  {% else %}
+    <header class="intro-header" style="background-image: url('{{ site.baseurl }}/{% if page.header-img %}{{ page.header-img }}{% else %}{{ site.header-img }}{% endif %}')">
+  {% endif %}
+    <div class="header-mask"></div>
+    <div class="container">
+      <div class="row">
+        <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
+          {% if include.short %}
+            <div class="site-heading" id="tag-heading">
+          {% else %}
+            <div class="site-heading">
+          {% endif %}
+              <h1>{% if page.title %}{{ page.title }}{% else %}{{ site.title }}{% endif %}</h1>
+              <span class="subheading">{{ page.description }}</span>
+            </div>
+        </div>
+      </div>
+    </div>
+  </header>
 {% endif %}

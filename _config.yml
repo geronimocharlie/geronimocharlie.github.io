@@ -1,7 +1,7 @@
 # Site settings
 title: Charlie Elektra Lange
 SEOTitle: Charlie Lange
-header-img: img/home-md-ch.jpg
+header-img: img/about-md-ch.png
 email: charlie.lange@posteo.de
 description: "Frontend: Machine Learning for Nature. Backend: A lot of artsy stuff and intended questionmarks."
 keyword: "Charlie Lange, Machine Learning for Climate, ML for Climate, Poetry"
@@ -14,9 +14,9 @@ future: true
 # SNS settings
 RSS: false
 github_username: geronimocharlie
-twitter_username: CHANGE
 #facebook_username:  huxpro
-linkedin_username:  CHANGE
+linkedin_username:  charlotte-lange-79b063227
+scholar_url: "https://scholar.google.com/citations?user=GE-is-AAAAAJ&hl=en"
 
 # Build settings
 # from 2016, 'pygments' is unsupported on GitHub Pages. Use 'rouge' for highlighting instead.
@@ -76,7 +76,7 @@ sidebar-avatar: https://github.com/geronimocharlie.png # use absolute URL, seein
 
 # Featured Tags
 featured-tags: true # whether or not using Feature-Tags
-featured-condition-size: 1 # A tag will be featured if the size of it is more than this condition value
+featured-condition-size: 2 # A tag will be featured if the size of it is more than this condition value
 
 # Progressive Web Apps
 chrome-tab-theme-color: "#000000"
@@ -85,17 +85,40 @@ service-worker: true
 # MathJax rendering for layout:page (e.g. post preview)
 page-mathjax: false
 
-# Friends
-friends:
-  [
-    { title: "Open PR to be featured!", href: "https://github.com/geronimocharlie/geronimocharlie.github.io/pulls" },
-  ]
 
 
 collections:
   poetry:
     output: true
     permalink: /poetry/:title/
+  research:
+    output: true
+    permalink: /projects/research/:title/
+  festivals:
+    output: true
+    permalink: /projects/festivals/:title/
+  moderations:
+    output: true
+    permalink: /projects/moderations/:title/
+  creative_writing:
+    output: true
+    permalink: /projects/creative_writing/:title/
+
 defaults:
   - scope: { path: "", type: "poetry" }
     values: { layout: poem }
+  - scope: { path: "", type: "research" }
+    values: { layout: post }
+  - scope: { path: "", type: "festivals" }
+    values: { layout: post }
+  - scope: { path: "", type: "moderations" }
+    values: { layout: post }
+  - scope: { path: "", type: "creative_writing" }
+    values: { layout: post }
+
+
+
+markdown: kramdown
+kramdown:
+  input: GFM
+  hard_wrap: true

@@ -1,19 +1,32 @@
 ---
 layout: page
-title: "About"
+title: "Charlie Elektra Lange"
 description: "Alyways trying to model out of distribution."
-header-img: "img/about-md-ch.jpg"
+header-img: "img/about/play1-crop.JPG"
 header-mask: 0.3
+permalink: /about/
 multilingual: true
+languages: [en, de]
+language_labels:
+  en: English
+  de: Deutsch
+
 ---
 
-{% include multilingual-sel.html %}
+{% if page.multilingual %}
+  {% include multilingual-sel.html %}
+{% endif %}
 
-<!-- English Version -->
-<div class="en post-container">
-    {% capture about_en %}{% include about/en.md %}{% endcapture %}
-    {{ about_en | markdownify }}
+<div class="post-container lang en">
+  {% capture about_en %}{% include about/en.md %}{% endcapture %}
+  {{ about_en | markdownify }}
 </div>
+
+<div class="post-container lang de">
+  {% capture about_de %}{% include about/de.md %}{% endcapture %}
+  {{ about_de | markdownify }}
+</div>
+
 
 
 {% if site.disqus_username %}

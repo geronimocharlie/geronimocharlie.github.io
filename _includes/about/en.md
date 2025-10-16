@@ -1,19 +1,11 @@
-Hey, I am Erwin Lejeune (a.k.a. _@rangonomics_, _@wardn_). I am a Robotics Engineer by degree, but I consider myself a Software Engineer at the core and have not limited myself to Robotics and its transversal fields. I have deployed web apps for blockchain analytics, trading (don't use it) bots, investment analytics apps, web3 and many more projects.
+**Researcher, programmer, writer, arts lover, and dancer (of thought).**{: .page-subtitle}
 
-In the past, I have led the development of Serena's Autonomous Navigation (ROS2, C++) stack at [Coalescent Mobile Robotics](https://cm-robotics.com/), worked at [Hiventive](https://www.hiventive.com/en/) both as a Back-End Software Engineer (Go, PostgreSQL) and as a Embedded Software Engineer (C++, C).
+I work at the intersection of machine learning and climate science, exploring how data and models can help us understand and protect the natural world. My academic path has taken me through cognitive science, environmental science, and interdisciplinary collaborations that link technology with ecological considerations.
 
-I have also been part of the Real Time Systems research team at [LS2N](https://ls2n.fr) for AI Planning, in which I have developed [pymapf](https://github.com/APLA-Toolbox/pymapf) (Multi-Agents Pathfinding Toolbox) and [pyddl](https://github.com/APLA-Toolbox/pythonpddl) (PDDL Parser/Planner).
+For me, research and technology are inseparable from creativity. I draw inspiration from both, and they continually shape how I think and make. Though not an established artist, I pursue projects in poetry and a book in progress, while also engaging in art exhibition moderations, festival organization and technical work, and musical explorations. These activities, alongside my academic training, let me move between analysis and imagination, precision and play.
 
-I have interned at [Ingeniarius](https://ingeniarius.pt/), where I have worked on [STOP](http://stop.ingeniarius.pt/), [SAFE](http://safeforest.ingeniarius.pt/) and [SEMFIRE](http://semfire.ingeniarius.pt/).
+At the heart of my work lies a concern for sustainability — not only in an environmental sense, but also as the practice of sustaining our capacity to wonder. To care for the world begins with being moved by it, and that involves opening up to the wonder of others while also sharing one’s own.
 
-I completed my BSc. in Electronics from [Nantes Université](https://english.univ-nantes.fr/), followed by a Master's in Embedded Systems at [Bordeaux Ynov Campus](https://www.ynov.com/campus/bordeaux). I then transfered for a Control and Robotics Master's at [Ecole Centrale Nantes](https://www.ec-nantes.fr/english-version), a top 5 graduate school in the country.
-
-I now started the process of learning Blockchain Technology as well as their web integrations with web3.
-
-##### Projects
-
-- [Trackdrop][1] · A Footprint Tracker on Ethereum's Rollups · 2023
-- [Python-Nexo][2] · A Python Wrapper for Nexo Pro's API · 2022
-
-[1]: https://trackdrop.xyz/
-[2]: https://github.com/guilyx/python-nexo
+{:.about-inline}
+![Photo Credits: Jonathan](/img/about/about-me.png){: .about-photo width="70%" }
+[Download Academic CV (PDF)](/assets/cv/CharlotteLangeCV2025.pdf){: .btn .btn-light }

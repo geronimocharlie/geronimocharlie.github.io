@@ -1,5 +1,81 @@
-                <!-- Language Selector -->
-                <select class="sel-lang" onchange= "onLanChange(this.options[this.options.selectedIndex].value)">
-                    <option value="0" selected> English </option>
-                </select>
+{% comment %}
+  Simple language selector
+  Expects on the page:
+    languages: [en, de]
+    language_labels: { en: English, de: Deutsch }
+{% endcomment %}
 
+{% comment %}
+  Build `langs` as an array regardless of whether the source was
+  provided as a YAML array (page.languages), a comma string (site.languages)
+  or missing (default string). Avoid piping `split` to an existing array
+  which causes unexpected stringification and broken labels.
+{% endcomment %}
+{% if page.languages %}
+  {% assign langs = page.languages %}
+{% elsif site.languages %}
+  {% if site.languages contains "," %}
+    {% assign langs = site.languages | split: "," %}
+  {% else %}
+    {% assign langs = site.languages %}
+  {% endif %}
+{% else %}
+  {% assign langs = "en,de" | split: "," %}
+{% endif %}
+
+<div class="lang-select">
+  <label for="lang-select" class="sr-only">Language</label>
+  <select id="lang-select" aria-label="Select language">
+    {% for code in langs %}
+      {% assign code = code | strip | downcase %}
+      {% assign label = page.language_labels[code] | default: site.language_labels[code] | default: code %}
+      <option value="{{ code }}">{{ label }}</option>
+    {% endfor %}
+  </select>
+</div>
+
+<script>
+document.addEventListener('DOMContentLoaded', function(){
+  var select = document.getElementById('lang-select');
+  if(!select) return;
+
+  function setLang(lang){
+    var blocks = document.querySelectorAll('.post-container.lang');
+    blocks.forEach(function(b){
+      if(b.classList.contains(lang)) b.style.display = '';
+      else b.style.display = 'none';
+    });
+    try{ localStorage.setItem('about_lang', lang); }catch(e){}
+    // update select if needed
+    if(select.value !== lang) select.value = lang;
+  }
+
+  function qs(name){
+    var m = location.search.match(new RegExp('[?&]'+name+'=([^&]+)'));
+    return m ? decodeURIComponent(m[1]) : null;
+  }
+
+  function hashLang(){
+    var h = location.hash.replace('#','').trim();
+    return h && h.length <= 5 ? h : null;
+  }
+
+  // preferred order: query param, hash, localStorage, default 'en'
+  var lang = qs('lang') || hashLang() || (function(){ try{ return localStorage.getItem('about_lang'); }catch(e){ return null; } })() || 'en';
+
+  // ensure allowed
+  var allowed = Array.prototype.slice.call(select.options).map(function(o){ return o.value; });
+  if(allowed.indexOf(lang) < 0) lang = allowed.indexOf('en') >= 0 ? 'en' : (allowed[0] || 'en');
+
+  setLang(lang);
+
+  select.addEventListener('change', function(){ setLang(this.value); });
+});
+</script>
+
+<style>
+/* Minimal styling for native select to keep layout simple */
+.lang-select{ margin:.25rem 0 1rem; display:inline-block; }
+#lang-select{ padding:.35rem .6rem; border-radius:6px; border:1px solid #e5e7eb; background:#fff; }
+.sr-only{ position: absolute !important; width: 1px !important; height: 1px !important; padding: 0 !important; margin: -1px !important; overflow: hidden !important; clip: rect(0,0,0,0) !important; border: 0 !important; }
+</style>

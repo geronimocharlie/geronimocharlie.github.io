@@ -6,7 +6,7 @@ layout: page
     <h1 class="post-title">{{ page.title }}</h1>
     {% if page.subtitle %}<p class="post-subtitle">{{ page.subtitle }}</p>{% endif %}
 
-    <div class="post-meta">
+    <div class="poem-meta">
       {% include season_label.html date=page.date label=page.display_date %}
       {% if page.location %}
         · <span class="post-location">
@@ -25,3 +25,6 @@ layout: page
   </div>
 </article>
 
+
+
+<article class="post-container" lang="{{ page.lang | default: site.lang | default: 'en' }}">

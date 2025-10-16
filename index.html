@@ -1,46 +1,102 @@
 ---
 layout: page
-description: "Home Page"
+title: "Field Notes"
+description: "Updates from the intersection of data, art, and ecology."
 ---
 
-{% for post in paginator.posts %}
-<div class="post-preview">
-    <a href="{{ post.url | prepend: site.baseurl }}">
-        <h2 class="post-title">
-            {{ post.title }}
-        </h2>
-        {% if post.subtitle %}
-        <h3 class="post-subtitle">
-            {{ post.subtitle }}
-        </h3>
-        {% endif %}
-        <div class="post-content-preview">
-            {% if post.lang == 'en' %}
-                {{ post.content | strip_html | truncate:300 }}
-            {% else %}
-                {{ post.content | strip_html | truncate:200 }}
-            {% endif %}
-        </div>
-    </a>
-    <p class="post-meta">
-        Posted by {% if post.author %}{{ post.author }}{% else %}{{ site.title }}{% endif %} on {{ post.date | date: "%B %-d, %Y" }}
-    </p>
-</div>
-<hr>
-{% endfor %}
+{%- comment -%} Ensure each collection var is an array {%- endcomment -%}
+{% assign research = site.research %}
+{% if research == nil %}{% assign research = '' | split: '' %}{% endif %}
 
-<!-- Pager -->
-{% if paginator.total_pages > 1 %}
-<ul class="pager">
-    {% if paginator.previous_page %}
-    <li class="previous">
-        <a href="{{ paginator.previous_page_path | prepend: site.baseurl | replace: '//', '/' }}">&larr; Newer Posts</a>
-    </li>
-    {% endif %}
-    {% if paginator.next_page %}
-    <li class="next">
-        <a href="{{ paginator.next_page_path | prepend: site.baseurl | replace: '//', '/' }}">Older Posts &rarr;</a>
-    </li>
-    {% endif %}
-</ul>
-{% endif %}
+{% assign festivals = site.festivals %}
+{% if festivals == nil %}{% assign festivals = '' | split: '' %}{% endif %}
+
+{% assign moderations = site.moderations %}
+{% if moderations == nil %}{% assign moderations = '' | split: '' %}{% endif %}
+
+{% assign creative_writing= site.creative_writing %}
+{% if creative_writing == nil %}{% assign creative_writing = '' | split: '' %}{% endif %}
+
+{% assign poetry = site.poetry %}
+{% if poetry == nil %}{% assign poetry = '' | split: '' %}{% endif %}
+
+{%- comment -%} Merge, filter, sort {%- endcomment -%}
+{% assign latest = research | concat: festivals | concat: moderations | concat: poetry %}
+{% assign latest = latest | where_exp: "i", "i.date" %}
+{% assign latest = latest | where_exp: "i", "i.draft != true" %}
+{% assign latest = latest | sort: "date" | reverse %}
+
+{%- comment -%}
+  Simple hash-based pager: render posts client-side from a JSON payload so
+  clicking the arrows sets `#page=N` and the JS shows the corresponding 5
+  posts. This keeps the UI minimal and bookmarkable.
+{%- endcomment -%}
+
+{% capture posts_json %}[
+{%- for item in latest -%}
+  {%- capture excerpt -%}{% if item.summary %}{{ item.summary | strip_newlines | strip | escape }}{% elsif item.excerpt %}{{ item.excerpt | strip_html | strip_newlines | truncate:200 | escape }}{% else %}{{ item.content | strip_html | strip_newlines | truncate:200 | escape }}{% endif %}{%- endcapture -%}
+  {"url":"{{ item.url | relative_url | escape }}","title":"{{ item.title | escape }}","subtitle":"{{ item.subtitle | escape }}","excerpt":"{{ excerpt }}","collection":"{{ item.collection | escape }}","display_date":"{{ item.display_date | escape }}","location":"{{ item.location | escape }}"}{% if forloop.last == false %},{% endif %}
+{%- endfor -%}
+]{% endcapture %}
+
+<div id="posts-list" data-posts='{{ posts_json | strip_newlines | escape }}'>
+  <!-- JS will render the current page of posts here -->
+</div>
+
+<div id="posts-pager" style="margin-top:1rem;display:flex;align-items:center;gap:1rem;">
+  <a id="pager-newer" href="#" style="text-decoration:none;padding:6px 10px;border:1px solid #ccc;border-radius:4px;">▲ Newer</a>
+  <div id="pager-info" style="font-size:0.95rem;color:#444;min-width:110px;text-align:center"></div>
+  <a id="pager-older" href="#" style="text-decoration:none;padding:6px 10px;border:1px solid #ccc;border-radius:4px;">▼ Older</a>
+</div>
+
+<script>
+;(function(){
+  var listEl = document.getElementById('posts-list');
+  var pagerInfo = document.getElementById('pager-info');
+  var btnNewer = document.getElementById('pager-newer');
+  var btnOlder = document.getElementById('pager-older');
+  var posts = [];
+  try{ posts = JSON.parse(listEl.getAttribute('data-posts') || '[]'); } catch(e){ posts = []; }
+
+  var pageSize = 5;
+  var totalPages = Math.max(1, Math.ceil(posts.length / pageSize));
+
+  function renderPage(page){
+    if(page < 1) page = 1; if(page > totalPages) page = totalPages;
+    var start = (page-1)*pageSize; var end = start + pageSize;
+    var slice = posts.slice(start, end);
+    var out = '';
+    slice.forEach(function(p){
+      out += '<div class="post-preview">';
+      out += '<a href="'+p.url+'">';
+      out += '<h2 class="post-title">'+p.title+'</h2>';
+      if(p.subtitle) out += '<h3 class="post-subtitle">'+p.subtitle+'</h3>';
+      out += '<div class="post-content-preview">'+p.excerpt+'</div>';
+      out += '</a>';
+      out += '<p class="post-meta"><span class="badge">'+(p.collection? (p.collection.charAt(0).toUpperCase()+p.collection.slice(1)) : '')+'</span>';
+      out += '<span class="sep">·</span> '+ (p.display_date || '');
+      if(p.location) out += ' <span class="sep">·</span> '+p.location;
+      out += '</p></div><hr>';
+    });
+    listEl.innerHTML = out;
+    pagerInfo.textContent = 'Page ' + page + ' / ' + totalPages + ' (' + Math.min(start+1, posts.length) + '–' + Math.min(end, posts.length) + ' of ' + posts.length + ')';
+    btnNewer.href = '#page=' + Math.max(1, page-1);
+    btnOlder.href = '#page=' + Math.min(totalPages, page+1);
+    if(page <= 1){ btnNewer.style.opacity = 0.4; } else { btnNewer.style.opacity = 1; }
+    if(page >= totalPages){ btnOlder.style.opacity = 0.4; } else { btnOlder.style.opacity = 1; }
+  }
+
+  function currentPageFromHash(){
+    var h = window.location.hash || '#page=1';
+    var m = h.match(/page=(\d+)/);
+    return m ? parseInt(m[1],10) : 1;
+  }
+
+  window.addEventListener('hashchange', function(){ renderPage(currentPageFromHash()); });
+
+  // initialize
+  if(posts.length === 0){ listEl.innerHTML = '<p>No items.</p>'; pagerInfo.textContent = ''; btnNewer.style.display='none'; btnOlder.style.display='none'; }
+  else { renderPage(currentPageFromHash()); }
+})();
+</script>
+

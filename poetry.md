@@ -2,8 +2,9 @@
 layout: page
 title: Poetry
 permalink: /poetry/
+header-img: img/poetry-ch_cropped.jpg
 ---
-<ul class="post-list">
+<ul class="post-list poetry-list">
   {% assign items = site.poetry | sort: 'date' | reverse %}
   {% for item in items %}
     <li>

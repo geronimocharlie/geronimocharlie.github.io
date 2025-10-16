@@ -1,0 +1,38 @@
+---
+layout: page
+---
+{% comment %}
+  project_list.html — lists a collection named in this page's front matter:
+  collection: research | festival | moderation
+{% endcomment %}
+
+{% assign colname = page.collection | downcase | default: '' %}
+{% assign items = '' | split: '' %} 
+
+{% if colname != '' %}
+  {% assign dynamic = site[colname] %}
+  {% if dynamic %}
+    {% assign items = dynamic %}
+  {% endif %}
+{% endif %}
+
+{% assign items = items | sort: 'date' | reverse %}
+
+{% if items == empty %}
+  <p>No items yet.</p>
+{% else %}
+<ul class="project-list">
+  {% for item in items %}
+    <li>
+      <a class="project-link" href="{{ item.url | relative_url }}">{{ item.title }}</a>
+      <div class="project-list-meta">
+        <span class="badge">{{ page.title }}</span>
+        <span class="sep">·</span>
+        {% include season_label.html date=item.date label=item.display_date %}
+        {% if item.location %}<span class="sep">·</span><span class="post-location">{{ item.location }}</span>{% endif %}
+      </div>
+      {% if item.summary %}<p class="project-summary">{{ item.summary }}</p>{% endif %}
+    </li>
+  {% endfor %}
+</ul>
+{% endif %}
