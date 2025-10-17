@@ -1,7 +1,7 @@
 ---
 title: Archive
 layout: default
-description: ""
+description: "It's cold in the archives, and there's nobody there. I belong in the archives. I am cold too."
 header-img: "img/archive.jpg"
 ---
 
@@ -11,92 +11,102 @@ header-img: "img/archive.jpg"
   <div class="row">
     <div class="col-lg-8 col-lg-offset-2 col-md-10 col-md-offset-1">
 
-      {%- comment -%} Build a unified list: Projects + Poetry {%- endcomment -%}
-      {% assign research = site.research %}{% if research == nil %}{% assign research = '' | split: '' %}{% endif %}
-      {% assign festivals = site.festivals %}{% if festivals == nil %}{% assign festivals = '' | split: '' %}{% endif %}
+      {%- comment -%} Gather collections (nil-safe) {%- endcomment -%}
+      {% assign research   = site.research %}{% if research   == nil %}{% assign research   = '' | split: '' %}{% endif %}
+      {% assign festivals   = site.festivals %}{% if festivals   == nil %}{% assign festivals   = '' | split: '' %}{% endif %}
       {% assign moderations = site.moderations %}{% if moderations == nil %}{% assign moderations = '' | split: '' %}{% endif %}
-	  {% assign creative_writing = site.creative_writing %}{% if creative_writing == nil %}{% assign creative_writing = '' | split: '' %}{% endif %}
-      {% assign poetry = site.poetry %}{% if poetry == nil %}{% assign poetry = '' | split: '' %}{% endif %}
+      {% assign poetry     = site.poetry     %}{% if poetry     == nil %}{% assign poetry     = '' | split: '' %}{% endif %}
 
-      {% assign _all = research | concat: festivals | concat: moderations | concat: poetry | concat: creative_writing %}
-      {% assign _all = _all | where_exp: "i", "i.date" %}
-      {% assign _all = _all | sort: "date" | reverse %}
+      {% assign _all = research | concat: festivals | concat: moderations | concat: poetry %}
+      {% assign _sorted = _all | sort: 'date' | reverse %}
 
-      {%- comment -%} Build a unique tag list across _all {%- endcomment -%}
-      {% capture _tag_string %}{% endcapture %}
-      {% for _doc in _all %}
-        {% if _doc.tags %}
-          {% for _t in _doc.tags %}
-            {% capture _tag_string %}{{ _tag_string }}|{{ _t | strip }}{% endcapture %}
+      {%- comment -%} Build unique tag list w/ counts (no where_exp) {%- endcomment -%}
+      {% capture _tag_str %}{% endcapture %}
+      {% for d in _all %}
+        {% if d.tags %}
+          {% for t in d.tags %}
+            {% capture _tag_str %}{{ _tag_str }}|{{ t | strip }}{% endcapture %}
           {% endfor %}
         {% endif %}
       {% endfor %}
-      {% assign _tags = _tag_string | split: "|" | uniq | sort_natural %}
-      {% assign _tags = _tags | where_exp: "t", "t != ''" %}
+      {% assign _uniq_tags = _tag_str | split:'|' | uniq | sort %}
+      {% assign _clean_tags = '' | split: '' %}
+      {% for t in _uniq_tags %}
+        {% unless t == '' %}
+          {% assign _clean_tags = _clean_tags | push: t %}
+        {% endunless %}
+      {% endfor %}
 
       <!-- Tags (as filter) -->
-      <div id="tag_cloud" class="tags tags-sup js-tags">
+      <div id='tag_cloud' class="tags tags-sup js-tags">
         <a class="tag-button--all" data-encode="">
           Show All
-          <sup>{{ _all.size }}</sup>
+          <sup>{{ _sorted.size }}</sup>
         </a>
 
-        {% capture tags_markup %}
-        {% for tag in _tags %}
-          {% assign tag_count = _all | where_exp: "i", "i.tags and i.tags contains tag" | size %}
-          <a
-            data-sort="{{ _all.size | minus: tag_count | prepend: '0000' | slice: -4, 4 }}"
-            data-encode="{{ tag | url_encode }}"
-            class="tag-button"
-            title="{{ tag }}"
-            rel="{{ tag_count }}"
-          >
-            {{ tag }}
-            <sup>{{ tag_count }}</sup>
-          </a>__SEPARATOR__
+        {% capture tags_markup %}{% endcapture %}
+        {% assign total_size = _sorted.size %}
+        {% for tag in _clean_tags %}
+          {% assign tag_count = 0 %}
+          {% for d in _all %}
+            {% if d.tags and d.tags contains tag %}
+              {% assign tag_count = tag_count | plus: 1 %}
+            {% endif %}
+          {% endfor %}
+          {% capture tags_markup -%}
+            {{ tags_markup }}
+            <a data-sort="{{ total_size | minus: tag_count | prepend:'0000' | slice:-4,4 }}"
+               data-encode="{{ tag | url_encode }}" class="tag-button"
+               title="{{ tag }}" rel="{{ tag_count }}">
+              {{ tag }}<sup>{{ tag_count }}</sup>
+            </a>__SEPARATOR__
+          {%- endcapture %}
         {% endfor %}
-        {% endcapture %}
-        {{ tags_markup | split: '__SEPARATOR__' | sort }}
+        {{ tags_markup | split:'__SEPARATOR__' | sort }}
       </div>
 
       <!-- Article List -->
       <div class="mini-post-list js-result d-none">
-        {%- assign _date = "" -%}
-        {% for _article in _all %}
-          {%- comment -%} build a CSV of tag encodes per item {%- endcomment -%}
-          {%- assign _tags_csv = "" -%}
-          {% if _article.tags %}
-            {% for _tag in _article.tags %}
-              {% assign _enc = _tag | strip | url_encode %}
-              {% if forloop.first %}
-                {%- assign _tags_csv = _enc -%}
-              {% else %}
-                {%- assign _tags_csv = _tags_csv | append: ',' | append: _enc -%}
-              {% endif %}
-            {% endfor %}
+        {% assign _date_year = "" %}
+        {% for _article in _sorted %}
+          {%- comment -%} skip items without date (older content safety) {%- endcomment -%}
+          {% if _article.date %}
+
+            {% assign _year = _article.date | date: '%Y' %}
+            {% if _year != _date_year %}
+              {% unless forloop.first %}</section>{% endunless %}
+              <section>
+                <span class="fa listing-seperator">
+                  <span class="tag-text">{{ _year }}</span>
+                </span>
+              {% assign _date_year = _year %}
+            {% endif %}
+
+            {%- comment -%} CSV of tags for client-side filter {%- endcomment -%}
+            {% assign _tags_csv = "" %}
+            {% if _article.tags %}
+              {% for _t in _article.tags %}
+                {% assign _enc = _t | strip | url_encode %}
+                {% if forloop.first %}
+                  {% assign _tags_csv = _enc %}
+                {% else %}
+                  {% assign _tags_csv = _tags_csv | append: ',' | append: _enc %}
+                {% endif %}
+              {% endfor %}
+            {% endif %}
+
+            <div class="post-preview item" data-tags="{{ _tags_csv }}">
+              <a href="{{ _article.url | relative_url }}">
+                <h2 class="post-title">{{ _article.title }}</h2>
+                {% if _article.subtitle %}
+                  <h3 class="post-subtitle">{{ _article.subtitle }}</h3>
+                {% endif %}
+              </a>
+              <hr>
+            </div>
+
+            {% if forloop.last %}</section>{% endif %}
           {% endif %}
-
-          {%- assign _current_year = _article.date | date: '%Y' -%}
-          {% if _current_year != _date %}
-            {% unless forloop.first %}</section>{% endunless %}
-            <section>
-              <span class="fa listing-seperator">
-                <span class="tag-text">{{ _current_year }}</span>
-              </span>
-            {% assign _date = _current_year %}
-          {% endif %}
-
-          <div class="post-preview item" data-tags="{{ _tags_csv }}">
-            <a href="{{ _article.url | relative_url }}">
-              <h2 class="post-title">{{ _article.title }}</h2>
-              {% if _article.subtitle %}
-                <h3 class="post-subtitle">{{ _article.subtitle }}</h3>
-              {% endif %}
-            </a>
-            <hr>
-          </div>
-
-          {% if forloop.last %}</section>{% endif %}
         {% endfor %}
       </div>
 

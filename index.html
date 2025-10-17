@@ -22,8 +22,11 @@ description: "Updates from the intersection of data, art, and ecology."
 
 {%- comment -%} Merge, filter, sort {%- endcomment -%}
 {% assign latest = research | concat: festivals | concat: moderations | concat: poetry %}
-{% assign latest = latest | where_exp: "i", "i.date" %}
-{% assign latest = latest | where_exp: "i", "i.draft != true" %}
+{%- comment -%}
+  `where_exp` isn't available in older Jekyll/Liquid versions. Instead of
+  filtering with `where_exp`, we sort the concatenated list and apply the
+  date/draft filters when building the JSON payload below.
+{%- endcomment -%}
 {% assign latest = latest | sort: "date" | reverse %}
 
 {%- comment -%}
@@ -33,11 +36,18 @@ description: "Updates from the intersection of data, art, and ecology."
 {%- endcomment -%}
 
 {% capture posts_json %}[
+{%- assign first_output = true -%}
 {%- for item in latest -%}
-  {%- capture excerpt -%}{% if item.summary %}{{ item.summary | strip_newlines | strip | escape }}{% elsif item.excerpt %}{{ item.excerpt | strip_html | strip_newlines | truncate:200 | escape }}{% else %}{{ item.content | strip_html | strip_newlines | truncate:200 | escape }}{% endif %}{%- endcapture -%}
-  {"url":"{{ item.url | relative_url | escape }}","title":"{{ item.title | escape }}","subtitle":"{{ item.subtitle | escape }}","excerpt":"{{ excerpt }}","collection":"{{ item.collection | escape }}","display_date":"{{ item.display_date | escape }}","location":"{{ item.location | escape }}"}{% if forloop.last == false %},{% endif %}
+  {%- comment -%} Only include items that have a date and are not drafts {%- endcomment -%}
+  {% if item.date and item.draft != true %}
+    {%- capture excerpt -%}{% if item.summary %}{{ item.summary | strip_newlines | strip | escape }}{% elsif item.excerpt %}{{ item.excerpt | strip_html | strip_newlines | truncate:200 | escape }}{% else %}{{ item.content | strip_html | strip_newlines | truncate:200 | escape }}{% endif %}{%- endcapture -%}
+    {% unless first_output %},{% endunless %}
+    {"url":"{{ item.url | relative_url | escape }}","title":"{{ item.title | escape }}","subtitle":"{{ item.subtitle | escape }}","excerpt":"{{ excerpt }}","collection":"{{ item.collection | escape }}","display_date":"{{ item.display_date | escape }}","location":"{{ item.location | escape }}"}
+    {%- assign first_output = false -%}
+  {% endif %}
 {%- endfor -%}
 ]{% endcapture %}
+
 
 <div id="posts-list" data-posts='{{ posts_json | strip_newlines | escape }}'>
   <!-- JS will render the current page of posts here -->
