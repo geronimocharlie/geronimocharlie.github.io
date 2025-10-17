@@ -1,6 +1,8 @@
+
 {% comment %}
-  Featured tags built from: research, festival, moderation, poetry
-  Uses site.featured-tags and site.featured-condition-size like the original.
+  Featured tags from: research, festival, moderation, poetry
+  Respects site.featured-tags and site.featured-condition-size
+  Compatible with GitHub Pages (Jekyll 3.10 / Liquid 4)
 {% endcomment %}
 
 {% if site.featured-tags %}
@@ -10,42 +12,57 @@
   {% endif %}
   <h5><a href="{{ '/archive/' | relative_url }}">FEATURED TAGS</a></h5>
 
-  {%- comment -%} Gather all docs {%- endcomment -%}
-  {% assign research   = site.research   %}{% if research   == nil %}{% assign research   = '' | split: '' %}{% endif %}
-  {% assign festivals   = site.festivals   %}{% if festivals   == nil %}{% assign festivals   = '' | split: '' %}{% endif %}
-  {% assign creative_writing   = site.creative_writing   %}{% if creative_writing   == nil %}{% assign creative_writing   = '' | split: '' %}{% endif %}
-  {% assign moderations = site.moderations %}{% if moderations == nil %}{% assign moderation = '' | split: '' %}{% endif %}
+  {%- comment -%} 1) Gather all docs, nil-safe {%- endcomment -%}
+  {% assign research   = site.research %}{% if research   == nil %}{% assign research   = '' | split: '' %}{% endif %}
+  {% assign festival   = site.festival %}{% if festival   == nil %}{% assign festival   = '' | split: '' %}{% endif %}
+  {% assign moderation = site.moderation %}{% if moderation == nil %}{% assign moderation = '' | split: '' %}{% endif %}
   {% assign poetry     = site.poetry     %}{% if poetry     == nil %}{% assign poetry     = '' | split: '' %}{% endif %}
 
-  {% assign all = research | concat: festivals | concat: moderations | concat: creative_writing | concat: poetry %}
-  {% assign all = all | where_exp: "i", "i.date" %}
-  {% assign total = all.size %}
+  {% assign all = research | concat: festival | concat: moderation | concat: poetry %}
+  {% assign total = all | size %}
 
-  {%- comment -%} Build unique tag list {%- endcomment -%}
-  {% capture tag_str %}{% endcapture %}
+  {%- comment -%} 2) Build unique tag list (string → uniq) {%- endcomment -%}
+  {% capture all_tags %}{% endcapture %}
   {% for d in all %}
     {% if d.tags %}
       {% for t in d.tags %}
-        {% capture tag_str %}{{ tag_str }}|{{ t | strip }}{% endcapture %}
+        {% capture all_tags %}{{ all_tags }}|{{ t | strip }}{% endcapture %}
       {% endfor %}
     {% endif %}
   {% endfor %}
-  {% assign uniq = tag_str | split: "|" | uniq | sort_natural %}
-  {% assign uniq = uniq | where_exp: "t", "t != ''" %}
+  {% assign uniq = all_tags | split: '|' | uniq | sort %}
+  {# remove empty entries #}
+  {% assign cleaned = '' | split: '' %}
+  {% for tag in uniq %}
+    {% unless tag == '' %}
+      {% assign cleaned = cleaned | push: tag %}
+    {% endunless %}
+  {% endfor %}
 
   <div class="tags">
-    {% capture tags %}
-    {% for t in uniq %}
-      {% assign count = all | where_exp: "i", "i.tags and i.tags contains t" | size %}
-      {% if count > site.featured-condition-size %}
-        <a
-          data-sort="{{ total | minus: count | prepend: '0000' | slice: -4, 4 }}"
-          href="{{ '/archive/' | relative_url }}?tag={{ t | url_encode }}"
-          title="{{ t }}" rel="{{ count }}">{{ t }}</a>__SEPARATOR__
+    {% capture tags_markup %}{% endcapture %}
+    {% for tag in cleaned %}
+      {%- comment -%} 3) Count occurrences of each tag across 'all' {%- endcomment -%}
+      {% assign count = 0 %}
+      {% for d in all %}
+        {% if d.tags and d.tags contains tag %}
+          {% assign count = count | plus: 1 %}
+        {% endif %}
+      {% endfor %}
+
+      {% assign min_size = site.featured-condition-size | default: 0 %}
+      {% if count > min_size %}
+        {% capture tags_markup -%}
+          {{ tags_markup }}
+          <a
+            data-sort="{{ total | minus: count | prepend: '0000' | slice: -4, 4 }}"
+            href="{{ '/archive/' | relative_url }}?tag={{ tag | url_encode }}"
+            title="{{ tag }}" rel="{{ count }}">{{ tag }}</a>__SEP__
+        {%- endcapture %}
       {% endif %}
     {% endfor %}
-    {% endcapture %}
-    {{ tags | split:'__SEPARATOR__' | sort }}
+
+    {{ tags_markup | split: '__SEP__' | sort }}
   </div>
 </section>
 {% endif %}
