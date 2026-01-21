@@ -1,5 +1,5 @@
 ---
-title: "Tik-Tok-Tik?"
+title: "Tik-Tok-Tik"
 date: 2023-12-01
 display-date: Winter 2023
 location: Osnabrück, Germany
