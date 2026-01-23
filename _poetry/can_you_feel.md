@@ -2,7 +2,7 @@
 title: "Can you feel?"
 date: 2023-06-01
 display-date: Summer 2023
-location: Somewhere On THe Road, Germany
+location: Somewhere On The Road, Germany
 layout: poem
 lang: en
 ---

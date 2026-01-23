@@ -1,5 +1,5 @@
 ---
-title: "Nothing to be."
+title: "Nothing to be"
 date: 2024-03-12
 display-date: Spring 2024
 location: Somewhere On The Road, Spain
