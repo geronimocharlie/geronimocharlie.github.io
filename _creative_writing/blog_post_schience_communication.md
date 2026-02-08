@@ -15,7 +15,7 @@ This text was written in the context of a university module on science communica
 ### 📖
 
 <div style="display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1em;">
-  <a href="/assets/writing/ScienceCommunication_BlogPost" download class="btn" style="background-color:#5B8E7D; color:white; padding:0.6em 1.2em; border-radius:8px; text-decoration:none; font-weight:600;">
+  <a href="/assets/writing/ScienceCommunication_BlogPost.pdf" download class="btn" style="background-color:#5B8E7D; color:white; padding:0.6em 1.2em; border-radius:8px; text-decoration:none; font-weight:600;">
   </a>
 </div>
 
