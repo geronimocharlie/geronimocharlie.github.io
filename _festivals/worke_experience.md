@@ -16,10 +16,12 @@ Over the past three summers, I have been part of several festivals that merge ar
 My festival journey began in **2023** as a volunteer in **volunteer management**.  
 In **2024**, I joined the **lighting technician teams** for *Mirage* and *Lumina*, the festival’s workshop areas — and by **2025**, I served as **Head of Technical Operations** for the *Lumina* area.  
 
-That year, I was responsible for organizing the **technical setup** for workshop and performance stages, coordinating **artist technical riders**, and creating the **shift schedule** for the team.  
+In **2025**, I was responsible for organizing the **technical setup** for workshop and performance stages, coordinating **artist technical riders**, and creating the **shift schedule** for the team.  
 I also oversaw both **setup** and **dismantling** processes, ensuring everything ran smoothly from start to finish.  
 
 A particular focus of my role was developing and implementing **AI-driven live caption generation** for workshops — enabling real-time bilingual accessibility between German and English participants.  
+
+In **2026** I, together with a collegue, curated, booked and managed all workshops, including on site stage set-up, overseeing on-site offices and stage managers. 
 
 ---
 

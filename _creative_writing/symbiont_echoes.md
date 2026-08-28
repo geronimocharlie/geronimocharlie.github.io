@@ -12,13 +12,13 @@ I am currently writing a science fiction book blending my background in cognitiv
 
 
 
-## Auszug: Kaptiel 1 - Das verdammte Datenzentrum
+## Auszug: Kaptiel 1 - Outlands
 
 Das Rauschen des Windes in den Blättern wurde von einem leisen Piepton unterbrochen, und Cyra kehrte in ihr eigenes Bewusstsein zurück. Sie blinzelte ihr Navigationssystem weg und ließ den Blick über die Lichtung vor ihr schweifen.
 
 „Echo, kannst du die alten Karten des Datenzentrums noch einmal aufrufen, die wir gefunden haben?“
 
-„Natürlich, Partner!“ Echo summte und schwebte neben ihrem Kopf. „Vor uns sehen wir die Karten des – Achtung, Arbeitstitel – ‚Verdammten Datenzentrums‘. Wir haben sie in drei verschiedenen, vom System aufgegebenen Knotenpunkten gefunden. Alle diese Dateien waren korrumpiert: beschädigt und verändert. Dank meiner höchst fähigen Wenigkeit konnten wir sie wiederherstellen.“
+„Natürlich, Partner!“ Echo summte und schwebte neben ihrem Kopf. „Vor uns sehen wir die Karten des – Achtung, Arbeitstitel – *‚Verdammten Datenzentrums‘*. Wir haben sie in drei verschiedenen, vom System aufgegebenen Knotenpunkten gefunden. Alle diese Dateien waren korrumpiert: beschädigt *und* verändert. Dank meiner höchst fähigen Wenigkeit konnten wir sie wiederherstellen.“
 
 Er ließ eine kurze Pause, als würde er sich selbst beklatschen, und fuhr dann fort, nun im Tonfall eines eingespielten Guides:
 
@@ -30,13 +30,13 @@ Die alten Pläne flackerten über Cyras Blickfeld, legten sich übereinander und
 
 Echo surrte gespielt beschämt.
 
-„Nach meinen Berechnungen gibt es drei wahrscheinliche Bereiche, in denen sich das ‚verdammte Datenzentrum‘ befinden könnte.“ Ein großes Gebiet direkt vor ihr erschien in einem blauen Schimmer. „Das wahrscheinlichste davon befindet sich, nun, wie man so schön sagt, direkt vor unseren Nasen. Wenn man denn eine hätte.“
+„Nach meinen Berechnungen gibt es drei wahrscheinliche Bereiche, in denen sich das *‚verdammte Datenzentrum‘* befinden könnte.“ Ein großes Gebiet direkt vor ihr erschien in einem blauen Schimmer. „Das wahrscheinlichste davon befindet sich, nun, wie man so schön sagt, direkt vor unseren Nasen. Wenn man denn eine hätte.“
 
 Die Drohne drehte sich vergnügt im Kreis.
 
 Dann flackerte seine Anzeige. Sein Ton wurde nüchterner.
 
-„Allerdings ergibt sich nach Abgleich mit frisch gemessenen — bisher natürlich unbekannten — Daten, dass dieses Areal doch weniger wahrscheinlich das gesuchte ‚verdammte Datenzentrum‘ aufweist.“ Ein kurzer Piepton. „Präzisionseinstellung vorübergehend auf hundert Prozent aktualisiert.“
+„Allerdings ergibt sich nach Abgleich mit frisch gemessenen — bisher natürlich unbekannten — Daten, dass dieses Areal doch weniger wahrscheinlich das gesuchte *‚verdammte Datenzentrum‘* aufweist.“ Ein kurzer Piepton. „Präzisionseinstellung vorübergehend auf hundert Prozent aktualisiert.“
 
 Die Einfärbung und die Karten verschwanden. Cyra sah wieder ungefiltert die weite Lichtung vor sich, umrahmt von hochwachsenden Bäumen. Das Gras schimmerte frostig in der Morgendämmerung und wuchs beinahe kniehoch. Es war klar, dass hier schon lange niemand mehr gewesen war — wie an fast allen Stellen außerhalb des Einzugsgebiets des Systems.
 
@@ -48,9 +48,9 @@ Die Drohne sank ein Stück ab und suchte Cyras Nähe. Seine weiß-blaue Verkleid
 
 Cyra legte eine Hand an seine Seite. „Schon okay. Es gibt ja noch weitere Stellen.“
 
-Sie sprach gern mit Echo, obwohl der Gedankenaustausch über ihren Interlink schneller gewesen wäre. Die Vibrationen seiner Stimme in der Luft gaben ihr Halt — einen Anker in der Wirklichkeit.
+Sie genoss es hier draußen immer offen mit Echo reden zu können, anstatt über ihr Interlink zu kommunizieren - die Vibration ihrer Stimmen in der Luft hatten etwas Beruhigendes. 
 
-Cyra ließ den Blick über die Bäume gleiten. Doch wie immer gab der Wald ihr hier nicht den Frieden, den sie suchte. Die Stämme standen zu gleichmäßig, zu kahl. Keine Menschenseele war seit Jahren hier gewesen, und trotzdem erkannte sie die Handschrift des Systems in jedem fehlenden Farnwedel, in jeder abwesenden Kletterpflanze.
+Cyra ließ den Blick über die Bäume gleiten, doch wie immer gab der Wald ihr hier nicht den Frieden, den sie suchte. Die Stämme standen zu gleichmäßig, zu kahl. Keine Menschenseele war seit Jahren hier gewesen, und trotzdem erkannte sie die Handschrift des Systems in jedem fehlenden Farnwedel, in jeder abwesenden Kletterpflanze.
 
 Unwillkürlich ertappte sie sich dabei, wie sie in Gedanken die leuchtenden Blüten ihrer Kindheit in die grauen Zwischenräume malte.
 
@@ -58,9 +58,7 @@ Mit einem Seufzen, um die verspannten Gedanken zu vertreiben, ließ sie ihren Bl
 
 Sie trat ein Stück in das kniehohe Gras, befreite den Boden mit geübten Bewegungen und kniete sich nieder. Ein Lächeln huschte über ihr Gesicht.
 
-Echo schwebte näher. „Serotonschwindel“, sagte er überrascht. „Was für ein Glücksfund.“
-
-Cyra nickte.
+Echo schwebte näher. „Serotonschwindel“, sagte er überrascht. „Was für ein Glücksfund.“ Er kicherte dabei sogleich über sein eigenes Wortspiel.
 
 Die Serotonschwindel-Schwämme waren ein faszinierender Anblick: glockenförmige Hüte in einem zarten, beinahe durchscheinenden Blauton, durchzogen von feinen silbrigen Adern, die schwach pulsierten. Die Stiele waren schlank und perlmuttfarben, mit einer Textur, die an synthetische Fasern erinnern.
 
@@ -76,10 +74,7 @@ Konfidenzeinstellung: neunundneunzig Prozent.
 
 Echo schwebte um sie herum und positionierte sich so, dass er freie Sicht auf ihre Hände hatte.
 
-Sie schnitt.
- Er zeichnete auf.
- Sie kratzte und stach.
- Er analysierte, sortierte, speicherte.
+Sie schnitt.<br> Er zeichnete auf.<br> Sie kratzte und stach.<br> Er analysierte, sortierte, speicherte.
 
 Ihre Gedanken wurden still.
 
@@ -87,17 +82,15 @@ Es rauschte.
 
 Sie sah die Weiten der im Rucksack integrierten Festplatte vor sich, schritt durch ihre Gänge, spürte das gleichmäßige Surren mit seinen kaum merklichen Aussetzern.
 
-Wind strich durch ihre Blätter.
- Baumkronen spannten sich endlos über ihr.
- Ein stetiger Fluss an Nährstoffen.
+Wind strich durch ihre Blätter.<br> Baumkronen spannten sich endlos über ihr.<br> Ein stetiger Fluss an Nährstoffen.
 
 Zu wenig.
 
-Der Rucksack klickte leise, als sich die Kompartimente wieder schlossen. Cyra schulterte ihn mit geübter Bewegung und blinzelte, als sich ihre Augen an das hellere Licht auf der Lichtung gewöhnten. Eine schwarze Strähne hatte sich aus ihrem langen Flechtzopf gelöst. Sie betrachtete kurz, wie der Wind sie bewegte, bevor sie sie wieder festzurrte.
+Der Rucksack klickte leise, als sich die Kompartimente wieder schlossen. Cyra schulterte ihn mit geübter Bewegung und blinzelte, als sich ihre Augen an das hellere Licht auf der Lichtung gewöhnten. Eine schwarze Strähne hatte sich aus ihrem langen Flechtzopf gelöst. Sie betrachtete kurz, wie der Wind mit ihr spielte, bevor sie sie wieder festzurrte.
 
 Mit der bunten Medizin im Gepäck fühlte sie sich leichter. Es kaufte ihr Zeit im System — Zeit, die sie vielleicht nicht wollte, aber brauchen würde.
 
-„Zwar kein“, sie lächelte schief und senkte die Stimme, „verdammtes Datenzentrum … aber es hat sich trotzdem gelohnt.“
+„Zwar kein“, sie lächelte schief und senkte die Stimme, „*verdammtes Datenzentrum* … aber es hat sich trotzdem gelohnt.“
 
 Echo wippte selbstzufrieden auf und ab.
 
@@ -115,7 +108,7 @@ Cyra fand sich augenblicklich in ihrem Körper wieder und blieb stehen. Die Umge
 
 Sie spürte eine Bewegung in ihrem Rücken, wirbelte herum und fing Echo gerade noch aus der Luft. Die Drohne fluchte.
 
-„Ich habe dir gesagt, du sollst endlich deine Sensoren austauschen lassen“, murmelte sie.
+„Ich habe dir gesagt, du sollst endlich deine Sensoren austauschen lassen“, stöhnte sie.
 
 „Ein bisschen Tollpatschigkeit gehört zu meinem Charme“, erwiderte Echo beleidigt. „Sonst würde ja nie etwas Spannendes passieren.“
 
@@ -155,15 +148,15 @@ Ihre Augen weiteten sich.
 
 Dort, wo sie die Leitungen erwartet hatte, sprossten purpurne, antennenartige Pflanzen aus der Erde. Dünne Stängel, gekrönt von fächerförmigen Strukturen, die an Miniaturradarschirme erinnerten. Sie wogten leicht im Wind — und pulsierten.
 
-"Faszinierend", kommentierte Echo dicht neben ihrem Ohr, erneut mit einer alten Tonaufnahme, die ihm eine blechernde Stimme verlieh. 
+„Faszinierend“, kommentierte Echo dicht neben ihrem Ohr, erneut mit einer alten Tonaufnahme, die ihm eine blechernde Stimme verlieh.
 
-"Es scheint, als hätten wir eine bisher unbekannte Spezies entdeckt." 
+„Es scheint, als hätten wir eine bisher unbekannte Spezies entdeckt.“
 
 Cyra hob den Blick zum Dach des Datenzentrums.
 
 Langsam verstand sie, was sie zuvor irritiert hatte.
 
-- 
+-
 
 Cyra zog sich vorsichtig an der metallischen Außenhaut empor. Die magnetisch verstärkten Finger ihrer Handschuhe fanden Halt, wo eigentlich keiner sein sollte. Als sie die Kante erreichte und sich über den Rand zog, stockte ihr der Atem.
 
@@ -173,7 +166,7 @@ Es lebte.
 
 Ein Teppich aus purpurfarbenen Stängeln bedeckte die gesamte Oberfläche. Sie wogten sanft im Wind, ihre fächerförmigen Enden schimmerten matt, fast atmend. Dazwischen schwebte ein feiner, glitzernder Staub, der sich in unsichtbaren Strömungen bewegte — als würde die Luft selbst pulsieren.
 
-„Ich bin mir nicht sicher, ob ich begeistert oder beunruhigt sein sollte“, murmelte Echo neben ihr. „Diese Dinger sehen aus wie die Tripoden aus Krieg der Welten – nur lila und besser vernetzt.“
+„Ich bin mir nicht sicher, ob ich begeistert oder beunruhigt sein sollte“, murmelte Echo neben ihr. „Diese Dinger sehen aus wie die Tripoden aus *Krieg der Welten* – nur lila und besser vernetzt.“
 
 Cyra kniete sich so behutsam nieder, als könne sie das Dach verletzen.
 
@@ -211,8 +204,6 @@ Cyra antwortete nicht sofort.
 
 „Konstruiert“, sagte sie schließlich.
 
-
-
 Cyra stellte den Rucksack ab. Es klickte.
 
 Sie zögerte einen Augenblick, wählte die passende Kompartimenteinstellung. Echo schwebte neben sie, richtete seine Sensoren neu aus.
@@ -221,28 +212,29 @@ Schnitt. Probe. Markierung.
 
 Es klickte erneut, als sich der Rucksack schloss. Cyra schulterte ihn und riss den Blick von den seltsamen Pflanzen los.
 
-Dann wandte sie sich dem Rand des Daches zu.
+Dann wandte sie sich dem Rand des Daches zu.<br>
 
-—
+Mit einem dumpfen Geräusch landete Cyra auf dem Boden. Ihre Knie federten den Aufprall geschmeidig ab
 
-Mit einem dumpfen Geräusch landete Cyra auf dem Boden. Ihre Knie federten den Aufprall geschmeidig ab.  Sie klopfte den feinen, schimmernden Staub von ihrer Kleidung und trat einen Schritt zurück, um die Struktur als Ganzes zu betrachten.
+---
+
+ Sie klopfte den feinen, schimmernden Staub von ihrer Kleidung und richtete sich wieder vollständig auf, um die Struktur als Ganzes zu betrachten.
 
 Die Titanwände erhoben sich vor ihr wie der Panzer eines gewaltigen Insekts — nahtlos, glatt, ohne erkennbare Öffnung.
 
 Aber irgendwo musste ein Eingang sein. Kein Bau dieser Größe kam ohne aus, selbst wenn er so perfekt verborgen war.
 
-Echo schwebte neben ihr, seine Sensoren arbeiteten auf Hochtouren.
-„Logisch betrachtet“, begann er, „sollte sich der Eingang auf der windabgewandten Seite befinden. Weniger Erosion. Weniger Wartung.“
+Echo schwebte neben ihr, seine Sensoren arbeiteten auf Hochtouren.<br>„Logisch betrachtet“, begann er, „sollte sich der Eingang auf der windabgewandten Seite befinden. Weniger Erosion. Weniger Wartung.“
 
-Cyra umrundete das Gebäude. Auf der Nordseite blieb sie stehen.  Eine kaum wahrnehmbare Vertiefung zeichnete sich im Metall ab — zu regelmäßig, um zufällig zu sein.
+Cyra umrundete das Gebäude. Auf der Nordseite blieb sie stehen. Eine kaum wahrnehmbare Vertiefung zeichnete sich im Metall ab — zu regelmäßig, um zufällig zu sein.
 
 Sie starrte einen Moment unfokussiert auf die Wand und berührte dann eine Stelle knapp oberhalb ihrer Schulter mit der Fingerspitze. Nach wenigen Millisekunden glitt ein ovalförmiges Segment der Oberfläche beinahe geräuschlos zur Seite. Ein schwaches Schaben verriet das Alter des Mechanismus.
 
 Darunter kam ein komplexes Schlosssystem zum Vorschein: ineinandergreifende Ringe und Zylinder, tief in die Wand eingelassen, das Material silbrig mit einem bläulichen Schimmer.
 
-"Interessante Sicherheitsmaßnahme", kommentierte Echo. “So mechanisch. Erinnert mich an die Türen zu Moria in 'Der Herr der Ringe',nur vermutlich mit einem elektronischen Passwortemfpänger anstatt - eines Geistes?" 
+„Interessante Sicherheitsmaßnahme“, kommentierte Echo. „So mechanisch. Erinnert mich an die Türen zu Moria in ‚Der Herr der Ringe‘, nur vermutlich mit einem elektronischen Passwortempfänger anstatt - eines Geistes?“
 
-Cyra kniete sich vor das Schloss und stellte den Rucksack neben sich ab. Es klickte. Sie holte den “Schallschraubenzieher” hervor, wie Echo ihn liebevoll nannte, und setzte ihn an.
+Cyra kniete sich vor das Schloss und stellte den Rucksack neben sich ab. Es klickte. Sie holte den „Schallschraubenzieher“ hervor, wie Echo ihn liebevoll nannte, und setzte ihn an.
 
 Das Gerät summte leise, wechselte Frequenzen, tastete sich durch Schallwellen und elektromagnetische Impulse. Cyra wartete auf die vertraute Vibration.
 
@@ -268,7 +260,7 @@ Cyra richtete sich langsam auf. Ihr Blick blieb auf dem pulsierenden Violett lie
 
 „Dann ist das hier kein Hindernis“, sagte sie ruhig. „Sondern etwas anderes.“
 
-Sie überlegte kurz und holte dann eine kleine Flasche mit einer klaren Flüssigkeit aus ihrem Rucksack. "Oh ho, Achtung, jetzt wirds ätzend!", kommentierte Echo fröhlich.
+Sie überlegte kurz und holte dann eine kleine Flasche mit einer klaren Flüssigkeit aus ihrem Rucksack. „Oh ho, Achtung, jetzt wirds ätzend!“, kommentierte Echo fröhlich.
 
 Die violetten Adern spannten sich an und versiegelten sich selbst.
 
@@ -278,14 +270,11 @@ Cyra hielt kurz inne und schaltete den Laser ab. So verlor sie nur Zeit.
 
 Stattdessen zog sie den 3D-Scanner aus einer Seitentasche ihres Rucksacks. Das handtellergroße Gerät entfaltete seinen fächerförmigen Projektor und tastete das Schlosssystem langsam, methodisch ab.
 
-Der Scanner piepte.
-Das holografische Modell erschien in ihrer Retina: ineinandergreifende Ringe, mechanische Strukturen — und dazwischen das dichte Netzwerk violetter Pflanzenadern.
+Der Scanner piepte.<br>Das holografische Modell erschien in ihrer Retina: ineinandergreifende Ringe, mechanische Strukturen — und dazwischen das dichte Netzwerk violetter Pflanzenadern.
 
 „Wirklich faszinierend“, kommentierte Echo, während sie das Modell drehte. „Das ist keine Zerstörung. Das ist … Evolution.“
 
-Cyra steckte den Scanner zurück und richtete sich auf. „Wir kommen hier nicht rein. Nicht heute.“
-Sie sah noch einmal auf das pulsierende Violett.
-„Was wir brauchen, ist ein Schlüssel. Einer, der nicht versucht, die Pflanzen zu umgehen, sondern mit ihnen zu kommunizieren.“
+Cyra steckte den Scanner zurück und richtete sich auf. „Wir kommen hier nicht rein. Nicht heute.“<br>Sie sah noch einmal auf das pulsierende Violett.<br>„Was wir brauchen, ist ein Schlüssel. Einer, der nicht versucht, die Pflanzen zu umgehen, sondern mit ihnen zu kommunizieren.“
 
 Echo schwebte auf Augenhöhe. „Ich gehe gerade unsere Bestände durch.“ Eine kurze Pause. „Es gibt schlechte Neuigkeiten. Aber ich bin mir sicher, du weißt sie bereits.“
 
@@ -293,15 +282,13 @@ Cyra seufzte. „Ja. Wir brauchen Material aus dem System.“
 
 Schwermut erfasste sie.
 
-„Und selbst wenn wir es bekommen“, fuhr sie fort, „können wir daraus nichts bauen. Nicht ohne Hilfe.“
+„Und selbst *wenn* wir es bekommen“, fuhr sie fort, „können wir daraus nichts bauen. Nicht ohne Hilfe.“
 
 Echo neigte sich leicht zur Seite. „Also nicht ohne die Raiders. Ich verspüre jetzt schon eine Mischung aus Faszination und Überforderung. Und das dringende Bedürfnis, mir die Hand vors Gesicht zu schlagen — wenn ich denn eine hätte.“
 
 Cyra verzog den Mund. „Sag Bescheid. Ich kann das gerne für dich übernehmen.“
 
-„War das etwa ein Witz? Wie komme ich denn zu der Ehre?“
-Echo flog näher und berührte sie mit dem Metall über seinen Augen an der Stirn. Die Kühle ließ sie kurz die Augen schließen.
-„Liebes Wesen mit faszinierenden zweifarbigen Augen“, flüsterte er, „geht es dir gut?“
+„War das etwa ein Witz? Wie komme ich denn zu der Ehre?“<br>Echo flog näher und berührte sie mit dem Metall über seinen Augen an der Stirn. Die Kühle ließ sie kurz die Augen schließen.<br>„Liebes Wesen mit faszinierenden zweifarbigen Augen“, flüsterte er, „geht es dir gut?“
 
 „Ja“, sagte Cyra. „Ich habe nur meine Humoreinstellung vorübergehend auf achtzig Prozent gesetzt.“
 
@@ -315,6 +302,6 @@ Echo summte zufrieden. „Ein Glück also, dass wir Serotonschwindel gefunden ha
 
 Cyra hielt einen Moment inne.
 
-Dann schnaubte sie leise.
-„Ja“, sagte sie trocken. „Ein Glück.“
+Dann schnaubte sie leise.<br>„Ja“, sagte sie trocken. „Ein Glück.“
+
 
